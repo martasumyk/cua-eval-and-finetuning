@@ -1,0 +1,15 @@
+datasets
+openai>=1.12.0
+python-dotenv>=1.0.1
+pillow>=10.3.0
+pyautogui>=0.9.54
+mss>=9.0.1
+
+torch>=2.2.0
+transformers>=4.42.0
+accelerate>=0.29.3
+trl>=0.9.4
+
+numpy>=1.26.4
+tqdm>=4.66.2
+
