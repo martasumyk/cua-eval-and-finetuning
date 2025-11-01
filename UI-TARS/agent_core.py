@@ -1,31 +1,42 @@
+import os
 import re
 import time
+import json
 import pyautogui
-from typing import Dict, List
-from vision import take_screenshot_b64, add_box_token
-from llm_client import build_messages, query_model, init_client
-from config import TASK
+from datetime import datetime
+from typing import Dict, List, Any
 
-def parse_action_block(model_reply: str) -> Dict:
-    """
-    Extract action from model_reply and turn it into
-    something executable with pyautogui.
-    """
+from vision import save_and_encode, add_box_token
+from llm_client import build_messages, query_model, init_client
+from config import TASK, LOG_ROOT
+
+
+def extract_thought(model_reply: str) -> str:
+    m = re.search(r"Thought:\s*(.*?)(?:\nAction:|\Z)", model_reply, flags=re.DOTALL)
+
+    if not m:
+        return ""
+
+    return m.group(1).strip()
+
+
+def parse_action_block(model_reply: str) -> Dict[str, Any]:
 
     m = re.search(r"Action:\s*(.+)", model_reply)
     if not m:
         return {"type": "none"}
     action_str = m.group(1).strip()
 
+    # finished(content='...')
     m_fin = re.match(r"finished\(content='(.*)'\)", action_str)
     if m_fin:
         return {"type": "finished", "content": m_fin.group(1)}
 
+    # click(start_box=... or end_box=...)
     m_click_box = re.match(
         r"click\((start_box|end_box)='.*?\((\d+)\s*,\s*(\d+)\).*?'\)",
         action_str
     )
-
     if m_click_box:
         x = int(m_click_box.group(2))
         y = int(m_click_box.group(3))
@@ -35,8 +46,11 @@ def parse_action_block(model_reply: str) -> Dict:
             "y": y,
         }
 
-    # click / left_double / right_single 
-    m_click = re.match(r"(click|left_double|right_single)\(point='<point>(\d+)\s+(\d+)</point>'\)", action_str)
+    # click / left_double / right_single with <point>x y</point>
+    m_click = re.match(
+        r"(click|left_double|right_single)\(point='<point>(\d+)\s+(\d+)</point>'\)",
+        action_str
+    )
     if m_click:
         return {
             "type": m_click.group(1),
@@ -91,8 +105,7 @@ def parse_action_block(model_reply: str) -> Dict:
     return {"type": "raw", "raw": action_str}
 
 
-def execute_action(a: Dict) -> str | None:
-
+def execute_action(a: Dict[str, Any]) -> str | None:
     t = a["type"]
 
     if t in ["click", "left_double", "right_single"]:
@@ -135,35 +148,59 @@ def execute_action(a: Dict) -> str | None:
     return None
 
 
+def make_session_dir() -> str:
+    ts = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+
+    session_dir = os.path.join(LOG_ROOT, ts)
+    os.makedirs(session_dir, exist_ok=True)
+
+    return session_dir
+
+
 def run_agent(task: str, max_steps: int = 15, safety_max_steps: int | None = None):
     """
-    - screenshot
-    - send to model
-    - parse + execute action
+    - take screenshot
+    - send screenshot+history to model
+    - save screenshot and all metadata
+    - execute action
     - repeat
     """
 
     client = init_client()
-    history: List[dict] = []
+    history: List[dict] = [] 
+    step_logs: List[dict] = [] 
+
+    session_dir = make_session_dir()
 
     for step in range(max_steps):
         if safety_max_steps is not None and step >= safety_max_steps:
             print("Safety stop reached.")
             break
 
-        screenshot_b64 = take_screenshot_b64()
+        screenshot_b64, screenshot_path = save_and_encode(step, session_dir)
 
         msgs = build_messages(task, history, screenshot_b64)
 
         raw_reply = query_model(client, msgs)
+
         reply = add_box_token(raw_reply)
+
+        action = parse_action_block(reply)
+        thought = extract_thought(reply)
 
         print(f"\nStep {step}")
         print(reply)
 
-        action = parse_action_block(reply)
-
         status = execute_action(action)
+
+        step_logs.append({
+            "step": step,
+            "screenshot_path": screenshot_path,
+            "model_reply": reply,
+            "thought": thought,
+            "parsed_action": action,
+            "status_after_action": status,
+        })
 
         history.append({
             "role": "assistant",
@@ -174,6 +211,19 @@ def run_agent(task: str, max_steps: int = 15, safety_max_steps: int | None = Non
             break
 
         time.sleep(1)
+
+    session_log_path = os.path.join(session_dir, "session_log.json")
+    with open(session_log_path, "w") as f:
+        json.dump(
+            {
+                "task": task,
+                "steps": step_logs,
+            },
+            f,
+            indent=2
+        )
+
+    print(f"\nSession data saved in {session_dir}")
 
 
 def run_default_agent():

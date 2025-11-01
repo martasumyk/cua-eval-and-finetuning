@@ -3,9 +3,14 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+if not os.getenv("OPENAI_API_KEY") and os.getenv("HF_TOKEN"):
+    os.environ["OPENAI_API_KEY"] = os.getenv("HF_TOKEN")
+
 HF_BASE_URL = os.getenv("HF_BASE_URL")
-HF_TOKEN    = os.getenv("HF_TOKEN")
+HF_TOKEN    = os.getenv("HF_TOKEN") or os.getenv("OPENAI_API_KEY")
 MODEL_ID    = os.getenv("MODEL_ID", "ByteDance-Seed/UI-TARS-1.5-7B")
+
+LOG_ROOT    = "sessions"
 
 TASK        = "Open System Settings and enable Night Shift."
 
@@ -35,5 +40,5 @@ finished(content='xxx')
 """
 
 def build_instruction(task: str) -> str:
-    """Fill the prompt template with the current task."""
+    """Return final prompt text for the model for this task."""
     return PROMPT_TEMPLATE.format(instruction=task)
