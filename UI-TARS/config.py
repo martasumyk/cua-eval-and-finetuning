@@ -34,6 +34,7 @@ finished(content='xxx')
 ## Note
 - Use English in `Thought` part.
 - Write a small plan and finally summarize your next action (with its target element) in one sentence in `Thought` part.
+- You are controlling a macOS desktop. 
 
 ## User Instruction
 {instruction}
