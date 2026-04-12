@@ -8,6 +8,9 @@ from .config import VM_NAME, DEFAULT_START_WAIT
 
 
 def _ensure_macos():
+    """
+    Check to insure the current OS is macOS.
+    """
     if sys.platform != "darwin":
         raise RuntimeError("UTM automation only works on macOS (sys.platform == 'darwin').")
 
