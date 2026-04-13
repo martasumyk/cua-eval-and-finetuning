@@ -17,7 +17,7 @@ Motivation
     1. Evaluating the reliability of autonomous evaluators for CUAs (`evaluation` split)
     2. Training and fine-tuning of CUAs (`learning` split)
     
-    The dataset covers three operating systems: Windows, Linux, and macOS. To the best of our knowledge, no previous dataset has provided such broad coverage across both operating systems and applications.
+    The dataset covers three operating systems: Windows, Linux, and macOS. To the best of our knowledge, no previous dataset has provided such broad coverage across all operating systems and applications.
 
 Composition
 -----------
