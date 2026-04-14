@@ -135,7 +135,7 @@ Uses
     that use the dataset?** If so, please provide a link or other access
     point.
 
-    This [repository] (https://github.com/martasumyk/cua-eval-and-finetuning) contains all the code for evaluation and fine-tuning done with this dataset.
+    This [repository](https://github.com/martasumyk/cua-eval-and-finetuning) contains all the code for evaluation and fine-tuning done with this dataset.
 
 -   **What (other) tasks could the dataset be used for?**
 
