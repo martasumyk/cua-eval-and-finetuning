@@ -1,18 +1,10 @@
 # Reinforcement Learning with Autonomous Feedback for Computer Use Agents
 
-This repository presents a code for the thesis "Reinforcement Learning with Autonomous Feedback for Computer Use Agents".
+This repository contains the code accompanying the thesis **“Reinforcement Learning with Autonomous Feedback for Computer Use Agents.”** The project investigates how autonomous evaluator signals, produced by Vision-Language Models, can be used to assess task completion and support reinforcement learning for Computer Use Agents operating in desktop environments.
 
 ## Overview
 
 ## Structure
-
-
-
-
-## Data
-
-The dataset is available at Zenodo [link placeholder].
-
 
 ```
 ├── agents/         # Agents implementations and related utilities
@@ -27,3 +19,13 @@ The dataset is available at Zenodo [link placeholder].
 ├── pyproject.toml  # Project configuration
 └── requirements.txt # Python dependencies
 ```
+
+
+
+
+## Data
+
+The dataset is available at Zenodo [link placeholder].
+
+
+
