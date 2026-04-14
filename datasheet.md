@@ -157,14 +157,6 @@ Distribution
     [link placeholder]. The dataset will have a DOI.
 
 
--   **Will the dataset be distributed under a copyright or other
-    intellectual property (IP) license, and/or under applicable terms of
-    use (ToU)?** If so, please describe this license and/or ToU, and
-    provide a link or other access point to, or otherwise reproduce, any
-    relevant licensing terms or ToU, as well as any fees associated with
-    these restrictions.
-
-    To-do 
 
 
 -   **Any other comments?**
