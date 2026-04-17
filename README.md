@@ -4,6 +4,11 @@ This repository contains the code accompanying the thesis **“Reinforcement Lea
 
 ## Overview
 
+### Research Questions
+
+- Can Vision-Language Models (VLMs) serve as effective autonomous evaluators of task completion for computer-use agents operating in real-world desktop environments?
+- How can noisy autonomous evaluation signals be incorporated as reward feedback for reinforcement learning fine-tuning of CUAs in a statistically principled and robust manner?
+
 ## Structure
 
 ```
