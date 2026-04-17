@@ -6,10 +6,14 @@ This repository contains the code accompanying the thesis **“Reinforcement Lea
 
 ### Research Questions
 
-- Can Vision-Language Models (VLMs) serve as effective autonomous evaluators of task completion for computer-use agents operating in real-world desktop environments?
-- How can noisy autonomous evaluation signals be incorporated as reward feedback for reinforcement learning fine-tuning of CUAs in a statistically principled and robust manner?
+- **RQ1:** Can Vision-Language Models (VLMs) serve as effective autonomous evaluators of task completion for computer-use agents operating in real-world desktop environments?
+- **RQ2:** How can noisy autonomous evaluation signals be incorporated as reward feedback for reinforcement learning fine-tuning of CUAs in a statistically principled and robust manner?
 
-## Structure
+### Contributions 
+
+
+
+## Repository Structure
 
 ```
 ├── agents/         # Agents implementations and related utilities
@@ -25,12 +29,22 @@ This repository contains the code accompanying the thesis **“Reinforcement Lea
 └── requirements.txt # Python dependencies
 ```
 
+## Installation 
 
+## Quick Start
 
 
 ## Data
 
 The dataset is available at Zenodo [link placeholder].
 
+## Autonomous Evaluators
 
+## Reinforcement Learning Fine-Tuning
+
+## Publications and Intermediate Projects
+
+## Citation
+
+To be added.
 
