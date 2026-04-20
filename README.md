@@ -53,6 +53,8 @@ This thesis makes the following contributions:
 
 The dataset is available at Zenodo [link placeholder].
 
+The dataset description is done by the [Datasheets for Datasets](https://arxiv.org/abs/1803.09010) methodology and is available [here](https://github.com/martasumyk/cua-eval-and-finetuning/blob/main/datasheet.md).
+
 
 ## Autonomous Evaluators
 
