@@ -53,3 +53,14 @@ research/results/
 ```
 
 Each benchmark writes its results into a separate subdirectory.
+
+
+## Results
+
+Here are the results of evaluating OpenClaw on 3 bechmarks across different operating systems:
+
+| Benchmark | Accuracy |
+|---|---:|
+| macOSWorld | 0.15 |
+| OSWorld (Linux) | 0.40 |
+| Windows Agent Arena | 0.35 |
