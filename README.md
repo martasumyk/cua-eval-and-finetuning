@@ -54,9 +54,33 @@ The dataset description is done by the [Datasheets for Datasets](https://arxiv.o
 
 ## Autonomous Evaluators
 
+The autonomous evaluator is a Vision-Language Model (VLM) that judges whether a CUA has successfully completed a given task, based solely on a screenshot of the final GUI state and the original task description, without access to ground-truth labels or application-specific instrumentation.
+
+Given a task instruction and a final screenshot $s_{i,n}$, the evaluator produces a binary completion signal:
+
+$$\tilde{r}_i = \text{Evaluator}(s_{i,n}, \text{task}) \in \{0, 1\}$$
+
+Because VLM-based evaluators are imperfect, this signal is modeled as **noisy**, characterized by two error rates: False Positive and False Negative.
+
+The `evaluators/` directory contains implementations for both proprietary and open-source evaluators. Each evaluator shares a common interface: it receives a task string and a screenshot (as a base64-encoded image) and returns a dict with `completed` (0 or 1) and `justification` (a short text explanation).
+
+
 ## Reinforcement Learning Fine-Tuning
+The Reinforcement Learning (RL) fine-tuning framework closes the loop between autonomous evaluation and agent improvement. The agent interacts with a real desktop environment, producing trajectories of screenshots and actions. After each episode, the final screenshot $s_{i,n}$ is passed to the autonomous evaluator, which produces a noisy binary reward $\tilde{r}_i$. A noise-aware correction converts this into a calibrated reward $\hat{r}_i = f(\tilde{r}_i)$, which is then used to update the agent's policy via PPO:
+
+$$\theta \leftarrow \theta + \nabla_\theta J(\theta)$$
+
+
+Raw evaluator rewards are corrected using an estimator that accounts for the evaluator's false positive and false negative rates.
+
+where $p$ is the prior probability of task success. This correction reduces systematic bias introduced by evaluator noise and stabilizes the PPO update.
+
 
 <img src="files/methodology_figure.png" alt="Methodology of RL pipeline" width="500">
+
+
+
+See [`rl_tuning/README.md`](rl_tuning/README.md) for full usage and configuration details.
 
 ## Publications and Intermediate Projects
 
