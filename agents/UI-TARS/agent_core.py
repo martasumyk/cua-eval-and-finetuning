@@ -1,14 +1,14 @@
+import json
 import os
 import re
 import time
-import json
-import pyautogui
 from datetime import datetime
-from typing import Dict, List, Any
+from typing import Any, Dict, List
 
-from vision import save_and_encode, add_box_token
-from llm_client import build_messages, query_model, init_client
-from config import TASK, LOG_ROOT
+import pyautogui
+from config import LOG_ROOT, TASK
+from llm_client import build_messages, init_client, query_model
+from vision import add_box_token, save_and_encode
 
 
 def extract_thought(model_reply: str) -> str:
@@ -60,7 +60,8 @@ def parse_action_block(model_reply: str) -> Dict[str, Any]:
 
     # drag(start_point=..., end_point=...)
     m_drag = re.match(
-        r"drag\(start_point='<point>(\d+)\s+(\d+)</point>',\s*end_point='<point>(\d+)\s+(\d+)</point>'\)",
+        r"drag\(start_point='<point>(\d+)\s+(\d+)</point>',\
+        \s*end_point='<point>(\d+)\s+(\d+)</point>'\)",
         action_str
     )
     if m_drag:
@@ -87,7 +88,8 @@ def parse_action_block(model_reply: str) -> Dict[str, Any]:
 
     # scroll(point='<point>x y</point>', direction='down')
     m_scroll = re.match(
-        r"scroll\(point='<point>(\d+)\s+(\d+)</point>',\s*direction='(down|up|left|right)'\)",
+        r"scroll\(point='<point>(\d+)\s+(\d+)</point>',\
+        \s*direction='(down|up|left|right)'\)",
         action_str
     )
     if m_scroll:
@@ -167,8 +169,8 @@ def run_agent(task: str, max_steps: int = 15, safety_max_steps: int | None = Non
     """
 
     client = init_client()
-    history: List[dict] = [] 
-    step_logs: List[dict] = [] 
+    history: List[dict] = []
+    step_logs: List[dict] = []
 
     session_dir = make_session_dir()
 

@@ -10,20 +10,21 @@ Examples of commands:
 
 import argparse
 
-from .config import VM_NAME, DEFAULT_START_WAIT
+from .config import DEFAULT_START_WAIT, VM_NAME
 from .utm_vm import (
-    start_vm,
-    stop_vm,
-    restart_vm,
+    click_in_vm,
     pause_vm,
+    restart_vm,
     resume_vm,
     send_text,
-    click_in_vm,
+    start_vm,
+    stop_vm,
 )
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(prog="run_vm", description="Control a UTM VM from Python.")
+    parser = argparse.ArgumentParser(
+        prog="run_vm", description="Control a UTM VM from Python.")
     parser.add_argument(
         "--vm-name",
         default=VM_NAME,
@@ -37,7 +38,7 @@ def build_parser() -> argparse.ArgumentParser:
         "--wait",
         type=int,
         default=DEFAULT_START_WAIT,
-        help=f"Seconds to wait after start (default: {DEFAULT_START_WAIT}). Set 0 to skip.",
+        help="Seconds to wait after start.",
     )
 
     sub.add_parser("stop", help="Stop the VM.")
@@ -47,7 +48,7 @@ def build_parser() -> argparse.ArgumentParser:
         "--wait",
         type=int,
         default=DEFAULT_START_WAIT,
-        help=f"Seconds to wait after restart (default: {DEFAULT_START_WAIT}). Set 0 to skip.",
+        help="Seconds to wait after restart.",
     )
 
     # pause / resume

@@ -1,10 +1,9 @@
 import time
 from dataclasses import dataclass
-from typing import Any, Dict, List, Optional
+from typing import List
 
 from agents.UI_TARS.agent_core import (
     execute_action,
-    extract_thought,
     make_session_dir,
     parse_action_block,
 )
@@ -15,8 +14,8 @@ from evaluator.judge import judge_last_session_screenshot
 
 @dataclass
 class Transition:
-    prompt_messages: List[dict] 
-    response_text: str    
+    prompt_messages: List[dict]
+    response_text: str
     screenshot_path: str
     done: bool
 
@@ -38,6 +37,7 @@ class DesktopRolloutEnv:
       - repeat
       - evaluator judges final screenshot
     """
+
     def __init__(self, task: str, max_steps: int = 10, step_sleep: float = 1.0):
         self.task = task
         self.max_steps = max_steps

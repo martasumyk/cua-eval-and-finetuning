@@ -1,21 +1,22 @@
-import anthropic
-import pyautogui
+import argparse
+import json
+import os
 import subprocess
 import time
-import os
-import json
-import argparse
+
+import anthropic
+import pyautogui
 from PIL import ImageGrab
 
-TRAJECTORY_DIR = "./computer-use-agent/anthropic_trajectories" # where to save screenshots + reasonings
+TRAJECTORY_DIR = "./computer-use-agent/anthropic_trajectories"
 os.makedirs(TRAJECTORY_DIR, exist_ok=True)
 
 client = anthropic.Anthropic()
 
 AI_WIDTH, AI_HEIGHT = 1024, 768
 SCREEN_WIDTH, SCREEN_HEIGHT = pyautogui.size()
-MAX_REPEATS = 3 # maximum number of repeated cycles
-MAX_STEPS = 20 # if task is not done in MAX_STEPS times - just finish it
+MAX_REPEATS = 3
+MAX_STEPS = 20
 
 
 def next_task_dir(base_dir: str) -> str:
@@ -116,7 +117,7 @@ def run_single_task(task_text: str):
     print(f"\nRunning task: {task_text}")
 
     with open(os.path.join(task_dir, f"task_{task_num:03d}.txt"), "w") as f:
-        f.write(task_text) # save the task description
+        f.write(task_text)  # save the task description
 
     messages = [{"role": "user", "content": task_text}]
     last_action = None
@@ -163,9 +164,11 @@ def run_single_task(task_text: str):
                     continue
 
                 if tool_name == "computer":
-                    tool_output = run_computer_tool(tool_input.get("action"), tool_input, task_dir, step)
+                    tool_output = run_computer_tool(
+                        tool_input.get("action"), tool_input, task_dir, step)
                 elif tool_name == "bash":
-                    tool_output = run_bash_tool(tool_input.get("command", ""), task_dir, step)
+                    tool_output = run_bash_tool(
+                        tool_input.get("command", ""), task_dir, step)
                 elif tool_name == "str_replace_editor":
                     tool_output = run_editor_tool(tool_input, task_dir, step)
                 else:
@@ -189,6 +192,8 @@ def run_single_task(task_text: str):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run one Anthropic task.")
-    parser.add_argument("task", type=str, help="Task description to execute (quoted if it contains spaces).")
+    parser.add_argument(
+        "task", type=str, help="Task description to"
+        "execute (quoted if it contains spaces).")
     args = parser.parse_args()
     run_single_task(args.task)

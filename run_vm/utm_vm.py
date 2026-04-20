@@ -4,7 +4,7 @@ import time
 import urllib.parse
 from typing import Optional, Tuple
 
-from .config import VM_NAME, DEFAULT_START_WAIT
+from .config import DEFAULT_START_WAIT, VM_NAME
 
 
 def _ensure_macos():
@@ -12,7 +12,7 @@ def _ensure_macos():
     Check to insure the current OS is macOS.
     """
     if sys.platform != "darwin":
-        raise RuntimeError("UTM automation only works on macOS (sys.platform == 'darwin').")
+        raise RuntimeError("Only works on macOS.")
 
 
 def _utm_url(command: str, **params) -> str:
@@ -23,7 +23,6 @@ def _utm_url(command: str, **params) -> str:
 def _open_url(url: str) -> None:
     _ensure_macos()
     subprocess.run(["open", url], check=True)
-
 
 
 def start_vm(vm_name: str = VM_NAME, wait: Optional[int] = DEFAULT_START_WAIT) -> None:
@@ -45,7 +44,8 @@ def stop_vm(vm_name: str = VM_NAME) -> None:
     _open_url(url)
 
 
-def restart_vm(vm_name: str = VM_NAME, wait: Optional[int] = DEFAULT_START_WAIT) -> None:
+def restart_vm(vm_name: str = VM_NAME,
+               wait: Optional[int] = DEFAULT_START_WAIT) -> None:
     """
     Restart the VM (stop -> start).
     """
@@ -64,7 +64,6 @@ def pause_vm(vm_name: str = VM_NAME) -> None:
 def resume_vm(vm_name: str = VM_NAME) -> None:
     url = _utm_url("resume", name=vm_name)
     _open_url(url)
-
 
 
 def send_text(text: str, vm_name: str = VM_NAME) -> None:

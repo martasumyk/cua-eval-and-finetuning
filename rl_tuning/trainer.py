@@ -1,8 +1,12 @@
-from transformers import AutoTokenizer, AutoModelForCausalLM
-from trl import PPOTrainer, PPOConfig
+import json
+import os
+
+import torch
 from datasets import Dataset
+from transformers import AutoModelForCausalLM, AutoTokenizer
+from trl import PPOConfig, PPOTrainer
+
 from rl_tuning.rollout_env import collect_rollout
-import torch, json, os
 
 MODEL_DIR = "ByteDance-Seed/UI-TARS-1.5-7B"
 OUTPUT_DIR = "ppo_finetuned"

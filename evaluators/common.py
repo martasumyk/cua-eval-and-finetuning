@@ -8,7 +8,6 @@ from typing import Any
 
 from PIL import Image
 
-
 SYSTEM_PROMPT = (
     "You are an automated evaluator for a GUI agent.\n"
     "You will receive:\n"
@@ -45,7 +44,11 @@ def load_session_data(session_dir: str) -> dict[str, Any]:
     if not screenshot_path:
         raise ValueError("No screenshot_path found for the last step")
 
-    screenshot_path = str((session_path / screenshot_path).resolve()) if not Path(screenshot_path).is_absolute() else screenshot_path
+    screenshot_path = (
+        str((session_path / screenshot_path).resolve())
+        if not Path(screenshot_path).is_absolute()
+        else screenshot_path
+    )
 
     return {
         "task": task,

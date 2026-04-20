@@ -1,11 +1,13 @@
 import time
+
 import requests
+
 from research.config import (
-    OPENCLAW_BASE_URL,
     OPENCLAW_API_KEY,
+    OPENCLAW_BASE_URL,
+    OPENCLAW_MAX_RETRIES,
     OPENCLAW_MODEL,
     OPENCLAW_TIMEOUT,
-    OPENCLAW_MAX_RETRIES,
 )
 
 
@@ -17,7 +19,8 @@ class OpenClawClient:
         self.timeout = OPENCLAW_TIMEOUT
         self.max_retries = OPENCLAW_MAX_RETRIES
 
-    def infer(self, instruction, screenshot_b64, history=None, system_prompt="", extra=None):
+    def infer(self, instruction, screenshot_b64,
+              history=None, system_prompt="", extra=None):
         payload = {
             "instruction": instruction,
             "screenshot_b64": screenshot_b64,

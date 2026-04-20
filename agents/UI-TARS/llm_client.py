@@ -1,13 +1,16 @@
-from typing import List, Dict
-from openai import OpenAI
-from config import HF_BASE_URL, MODEL_ID, build_instruction
 import os
+from typing import Dict, List
+
+from config import HF_BASE_URL, MODEL_ID, build_instruction
+from openai import OpenAI
+
 
 def init_client() -> OpenAI:
     return OpenAI(
         base_url=HF_BASE_URL,
         api_key=os.getenv("OPENAI_API_KEY"),
     )
+
 
 def build_messages(task: str,
                    history: List[Dict[str, str]],
@@ -29,6 +32,7 @@ def build_messages(task: str,
     # current user turn first, then previous assistant turns
     msgs = [user_turn] + history
     return msgs
+
 
 def query_model(client: OpenAI, messages: list[dict]) -> str:
     """

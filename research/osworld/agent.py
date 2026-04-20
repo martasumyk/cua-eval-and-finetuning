@@ -1,10 +1,9 @@
 from pathlib import Path
 
-from research.common.openclaw_client import OpenClawClient
-from research.common.image_utils import image_to_base64
 from research.common.action_parser import extract_json, validate_action
+from research.common.image_utils import image_to_base64
 from research.common.logger import JsonlLogger
-
+from research.common.openclaw_client import OpenClawClient
 
 SYSTEM_PROMPT = """
 You are a desktop computer-use agent.

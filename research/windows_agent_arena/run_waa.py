@@ -1,5 +1,6 @@
 import subprocess
-from research.config import WAA_REPO, RESULTS_DIR
+
+from research.config import RESULTS_DIR, WAA_REPO
 
 
 def main():

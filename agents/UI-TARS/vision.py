@@ -1,9 +1,11 @@
+import base64
 import io
 import os
-import base64
 import re
+
 import mss
 from PIL import Image
+
 
 def capture_screenshot() -> Image.Image:
     with mss.mss() as sct:
@@ -12,6 +14,7 @@ def capture_screenshot() -> Image.Image:
         img = Image.frombytes("RGB", raw.size, raw.rgb)
     return img
 
+
 def encode_png_b64(img: Image.Image) -> str:
     buf = io.BytesIO()
     img.save(buf, format="PNG")
@@ -19,6 +22,7 @@ def encode_png_b64(img: Image.Image) -> str:
     b64 = base64.b64encode(buf.getvalue()).decode("utf-8")
 
     return "data:image/png;base64," + b64
+
 
 def save_and_encode(step_idx: int, session_dir: str) -> tuple[str, str]:
     os.makedirs(session_dir, exist_ok=True)
@@ -32,6 +36,7 @@ def save_and_encode(step_idx: int, session_dir: str) -> tuple[str, str]:
 
     data_url = encode_png_b64(img)
     return data_url, path
+
 
 def add_box_token(text: str) -> str:
     if "Action:" in text and "start_box=" in text:

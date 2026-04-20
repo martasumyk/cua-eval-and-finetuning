@@ -24,7 +24,7 @@ def sequence_logprob(
     prompt_len = input_ids.shape[-1]
     gen_len = generated_ids.shape[-1]
 
-    relevant_logits = logits[:, prompt_len - 1 : prompt_len + gen_len - 1, :]
+    relevant_logits = logits[:, prompt_len - 1: prompt_len + gen_len - 1, :]
     logprobs = F.log_softmax(relevant_logits, dim=-1)
 
     token_logprobs = logprobs.gather(-1, generated_ids.unsqueeze(-1)).squeeze(-1)
