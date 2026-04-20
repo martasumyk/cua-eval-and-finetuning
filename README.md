@@ -4,6 +4,9 @@ This repository contains the code accompanying the thesis **“Reinforcement Lea
 
 ## Overview
 
+Computer Use Agents (CUAs) represent an emerging Human-Computer Interaction (HCI) concept in which users delegate high-level goals to autonomous agents that perceive, reason, and act directly within desktop environments (see example in the image below). A core challenge is that CUAs frequently misidentify whether a task has been completed, leading to false positives and false negatives that undermine reliability in real-world deployment. This thesis investigates the use of Vision-Language Models (VLMs) as autonomous evaluators of CUA task completion. A VLM-based evaluator is used to judge task success from visual observations of the interface, and its feedback is modeled as a noisy reward signal characterized by false-positive and false-negative errors. To address the resulting learning bias, the thesis proposes a noise-corrected reward estimator and integrates it into a reinforcement-learning fine-tuning framework.
+
+
 <img src="files/CUA_trajectory.png" alt="CUA trajectory example" width="500">
 
 ### Research Questions
@@ -12,6 +15,16 @@ This repository contains the code accompanying the thesis **“Reinforcement Lea
 - **RQ2:** How can noisy autonomous evaluation signals be incorporated as reward feedback for reinforcement learning fine-tuning of CUAs in a statistically principled and robust manner?
 
 ### Contributions 
+
+This thesis makes the following contributions:
+
+- **Autonomous task completion evaluation.** We study the use of VLMs as autonomous evaluators for assessing task completion of computer-use agents based solely on visual observations of GUI states, without access to ground-truth success labels or application-specific instrumentation.
+
+- **Problem formulation with noisy feedback.** We formalize task completion evaluation for desktop CUAs as a noisy binary feedback problem, explicitly modeling false positive and false negative errors in autonomous evaluator outputs. This formulation elevates task completion assessment from a heuristic post-processing step to a first-class learning problem.
+
+- **Noise-aware reward design for reinforcement learning.** We propose a statistically grounded approach for incorporating noisy autonomous evaluation signals as reward feedback for reinforcement learning fine-tuning, enabling learning to remain robust despite evaluator uncertainty.
+
+- **End-to-end fine-tuning framework.** We integrate autonomous task evaluation and noise-aware reward correction into a standard policy-gradient reinforcement learning pipeline, enabling end-to-end fine-tuning of computer-use agents without manual annotations, hand-crafted reward functions, or task-specific APIs.
 
 
 
