@@ -4,6 +4,8 @@ This repository contains the code accompanying the thesis **“Reinforcement Lea
 
 ## Overview
 
+<img src="files/CUA_trajectory.png" alt="CUA trajectory example" width="500">
+
 ### Research Questions
 
 - **RQ1:** Can Vision-Language Models (VLMs) serve as effective autonomous evaluators of task completion for computer-use agents operating in real-world desktop environments?
@@ -38,9 +40,12 @@ This repository contains the code accompanying the thesis **“Reinforcement Lea
 
 The dataset is available at Zenodo [link placeholder].
 
+
 ## Autonomous Evaluators
 
 ## Reinforcement Learning Fine-Tuning
+
+<img src="files/methodology_figure" alt="Methodology of RL pipeline" width="500">
 
 ## Publications and Intermediate Projects
 
