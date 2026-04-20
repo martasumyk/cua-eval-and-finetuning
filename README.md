@@ -44,10 +44,6 @@ This thesis makes the following contributions:
 └── requirements.txt # Python dependencies
 ```
 
-## Installation 
-
-## Quick Start
-
 
 ## Data
 
