@@ -45,7 +45,7 @@ The dataset is available at Zenodo [link placeholder].
 
 ## Reinforcement Learning Fine-Tuning
 
-<img src="files/methodology_figure" alt="Methodology of RL pipeline" width="500">
+<img src="files/methodology_figure.png" alt="Methodology of RL pipeline" width="500">
 
 ## Publications and Intermediate Projects
 
