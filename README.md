@@ -44,6 +44,24 @@ This thesis makes the following contributions:
 └── requirements.txt # Python dependencies
 ```
 
+## Installation & Quick Start
+
+This repository is organized into several components, each with its own setup details and usage notes.
+
+Install the main dependencies:
+
+```
+pip install -r requirements.txt
+```
+
+Additional installation and configuration instructions for each part of the repository are available here:
+
+- For evaluators usage, see [`evaluators/README.md`](evaluators/README.md)
+- For running agents and collecting trajectories, see [`agents/README.md`](agents/README.md)
+- For OpenClaw benchmarking experiments, see [`research/README.md`](research/README.md)
+- For RL fine-tuning, see [`rl_tuning/README.md`](rl_tuning/README.md)
+- For UTM-based VM control, see [`run_vm/README.md`](run_vm/README.md)
+
 
 ## Data
 
