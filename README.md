@@ -3,6 +3,22 @@
 
 This repository contains the code accompanying the thesis **“Reinforcement Learning with Autonomous Feedback for Computer Use Agents.”** The project investigates how autonomous evaluator signals, produced by Vision-Language Models, can be used to assess task completion and support reinforcement learning for Computer Use Agents operating in desktop environments.
 
+## Table of Contents
+
+- [Overview](#overview)
+  - [Research Questions](#research-questions)
+  - [Contributions](#contributions)
+- [Repository Structure](#repository-structure)
+- [Installation & Quick Start](#installation--quick-start)
+- [Data](#data)
+- [Autonomous Evaluators](#autonomous-evaluators)
+- [Reinforcement Learning Fine-Tuning](#reinforcement-learning-fine-tuning)
+- [Publications and Intermediate Projects](#publications-and-intermediate-projects)
+  - [Are We Done Yet?: A Vision-Based Judge for Autonomous Task Completion of Computer Use Agents](#1-are-we-done-yet-a-vision-based-judge-for-autonomous-task-completion-of-computer-use-agents)
+  - [CUAAudit: Meta-Evaluation of Vision-Language Models as Auditors of Autonomous Computer-Use Agents](#2-cuaaudit-meta-evaluation-of-vision-language-models-as-auditors-of-autonomous-computer-use-agents)
+- [Citation](#citation)
+
+
 ## Overview
 
 Computer Use Agents (CUAs) represent an emerging Human-Computer Interaction (HCI) concept in which users delegate high-level goals to autonomous agents that perceive, reason, and act directly within desktop environments (see example in the image below). A core challenge is that CUAs frequently misidentify whether a task has been completed, leading to false positives and false negatives that undermine reliability in real-world deployment. This thesis investigates the use of Vision-Language Models (VLMs) as autonomous evaluators of CUA task completion. A VLM-based evaluator is used to judge task success from visual observations of the interface, and its feedback is modeled as a noisy reward signal characterized by false-positive and false-negative errors. To address the resulting learning bias, the thesis proposes a noise-corrected reward estimator and integrates it into a reinforcement-learning fine-tuning framework.
