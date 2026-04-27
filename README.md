@@ -1,4 +1,5 @@
-# Reinforcement Learning with Autonomous Feedback for Computer Use Agents
+<h1 align="center">Reinforcement Learning with Autonomous Feedback for Computer Use Agents</h1>
+
 
 This repository contains the code accompanying the thesis **“Reinforcement Learning with Autonomous Feedback for Computer Use Agents.”** The project investigates how autonomous evaluator signals, produced by Vision-Language Models, can be used to assess task completion and support reinforcement learning for Computer Use Agents operating in desktop environments.
 
