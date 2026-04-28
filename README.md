@@ -38,7 +38,9 @@ This repository contains the code accompanying the thesis **“Reinforcement Lea
 Computer Use Agents (CUAs) represent an emerging Human-Computer Interaction (HCI) concept in which users delegate high-level goals to autonomous agents that perceive, reason, and act directly within desktop environments (see example in the image below). A core challenge is that CUAs frequently misidentify whether a task has been completed, leading to false positives and false negatives that undermine reliability in real-world deployment. This thesis investigates the use of Vision-Language Models (VLMs) as autonomous evaluators of CUA task completion. A VLM-based evaluator is used to judge task success from visual observations of the interface, and its feedback is modeled as a noisy reward signal characterized by false-positive and false-negative errors. To address the resulting learning bias, the thesis proposes a noise-corrected reward estimator and integrates it into a reinforcement-learning fine-tuning framework.
 
 
-<img src="files/CUA_trajectory.png" alt="CUA trajectory example" width="500">
+<p align="center">
+  <img src="files/CUA_trajectory.png" alt="CUA trajectory example" width="500">
+</p>
 
 ### Research Questions
 
@@ -125,8 +127,9 @@ Raw evaluator rewards are corrected using an estimator that accounts for the eva
 where $p$ is the prior probability of task success. This correction reduces systematic bias introduced by evaluator noise and stabilizes the PPO update.
 
 
-<img src="files/methodology_figure.png" alt="Methodology of RL pipeline" width="500">
-
+<p align="center">
+  <img src="files/methodology_figure.png" alt="Methodology of RL pipeline" width="500">
+</p>
 
 
 See [`rl_tuning/README.md`](rl_tuning/README.md) for full usage and configuration details.
