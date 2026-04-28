@@ -4,6 +4,14 @@ Here we present a lightweight Python module for controlling [UTM](https://docs.g
 
 > **macOS only** — UTM automation relies on `open utm://...` URLs, which are available on macOS exclusively.
 
+## Table of Contents
+
+- [Commands](#commands)
+- [Usage](#usage)
+- [Configuration](#configuration)
+- [Python API](#python-api)
+- [Reference](#reference)
+
 ## Commands
 
 | Command | Description |
