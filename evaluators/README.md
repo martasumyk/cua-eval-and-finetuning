@@ -7,6 +7,15 @@ The goal of these evaluators is to provide an automatic success signal that can 
 - comparison of different evaluator models
 - feedback for reinforcement learning fine-tuning
 
+## Table of Contents
+
+- [Supported Evaluators](#supported-evaluators)
+- [Directory Structure](#directory-structure)
+- [Input Format](#input-format)
+- [Usage](#usage)
+- [Environment Setup](#environment-setup)
+- [Evaluator Design](#evaluator-design)
+
 ## Supported evaluators
 
 The following evaluator backends are implemented in this directory:
