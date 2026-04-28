@@ -6,6 +6,14 @@ Here you can see small wrappers around different Computer-Use agents that can co
 - `UI-TARS/` – runner for a HuggingFace-hosted **UI-TARS** vision-based agent.
 - `OpenAI_Operator/` – runner an OpenAI-based operator.
 
+## Table of Contents
+
+- [Installation](#installation)
+- [Running Agents](#running-agents)
+  - [Anthropic CU](#anthropic-cu)
+  - [UI-TARS Agent](#ui-tars-agent)
+  - [OpenAI Operator](#openai-operator)
+
 
 ## Installation
 
