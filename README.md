@@ -1,5 +1,19 @@
 <h1 align="center">Reinforcement Learning with Autonomous Feedback for Computer Use Agents</h1>
 
+<p align="center">
+  <strong>Author:</strong> 
+  <a href="https://www.linkedin.com/in/marta-sumyk/">Marta Sumyk</a>
+</p>
+
+<p align="center">
+  <strong>Supervisor:</strong> 
+  <a href="https://oleksandrkosovan.github.io/">Oleksandr Kosovan</a>
+</p>
+
+<p align="center">
+  <a href="https://apps.ucu.edu.ua/en/">Faculty of Applied Sciences</a>, 
+  <a href="https://ucu.edu.ua/en/">Ukrainian Catholic University</a>
+</p>
 
 This repository contains the code accompanying the thesis **“Reinforcement Learning with Autonomous Feedback for Computer Use Agents.”** The project investigates how autonomous evaluator signals, produced by Vision-Language Models, can be used to assess task completion and support reinforcement learning for Computer Use Agents operating in desktop environments.
 
