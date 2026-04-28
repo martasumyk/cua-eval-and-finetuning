@@ -2,6 +2,19 @@
 
 Reinforcement learning fine-tuning module for Computer Use Agents (CUAs). Implements a PPO-based training loop with an autonomous task-completion evaluator and noise-aware reward correction.
 
+
+## Table of Contents
+
+- [Pipeline](#pipeline)
+- [File Structure](#file-structure)
+- [Reward Correction](#reward-correction)
+- [Usage](#usage)
+  - [Run PPO Training](#run-ppo-training)
+  - [Collect a Single Rollout](#collect-a-single-rollout)
+  - [Compute Corrected Reward Manually](#compute-corrected-reward-manually)
+- [Configuration](#configuration)
+- [Dependencies](#dependencies)
+
 ## Pipeline
 
 The framework operates as a closed loop:
