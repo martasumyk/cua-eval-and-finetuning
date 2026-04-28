@@ -8,6 +8,13 @@ In this directory, we evaluate the quality of the open-source **OpenClaw** model
 
 The goal of this analysis is to assess the performance and generalization across operating systems of OpenClaw and compare with our implementation.
 
+## Table of Contents
+
+- [Setup](#setup)
+- [Running the Evaluation](#running-the-evaluation)
+- [Output](#output)
+- [Results](#results)
+
 ## Setup
 
 Install the research-specific dependencies:
