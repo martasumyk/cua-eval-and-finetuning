@@ -1,2 +1,15 @@
+[project]
+name = "cua-eval-and-finetuning"
+version = "0.1.0"
+description = "Reinforcement learning with autonomous feedback for computer-use agents"
+readme = "README.md"
+requires-python = ">=3.10"
+
+[tool.black]
+line-length = 88
+
 [tool.isort]
 profile = "black"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
