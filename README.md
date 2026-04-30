@@ -23,10 +23,10 @@ This repository contains the code accompanying the thesis **“Reinforcement Lea
   - [Research Questions](#research-questions)
   - [Contributions](#contributions)
 - [Repository Structure](#repository-structure)
-- [Installation & Quick Start](#installation--quick-start)
 - [Data](#data)
 - [Autonomous Evaluators](#autonomous-evaluators)
 - [Reinforcement Learning Fine-Tuning](#reinforcement-learning-fine-tuning)
+- [Reproducibility](#reproducibility)
 - [Publications and Intermediate Projects](#publications-and-intermediate-projects)
   - [Are We Done Yet?: A Vision-Based Judge for Autonomous Task Completion of Computer Use Agents](#1-are-we-done-yet-a-vision-based-judge-for-autonomous-task-completion-of-computer-use-agents)
   - [CUAAudit: Meta-Evaluation of Vision-Language Models as Auditors of Autonomous Computer-Use Agents](#2-cuaaudit-meta-evaluation-of-vision-language-models-as-auditors-of-autonomous-computer-use-agents)
@@ -133,6 +133,23 @@ where $p$ is the prior probability of task success. This correction reduces syst
 
 
 See [`rl_tuning/README.md`](rl_tuning/README.md) for full usage and configuration details.
+
+## Reproducibility
+
+To reproduce the main experiments:
+
+1. Install dependencies.
+2. Configure API keys and benchmark paths.
+3. Collect or load trajectories.
+4. Run autonomous evaluators.
+5. Run reward correction and PPO fine-tuning.
+6. Evaluate the resulting policy.
+
+Expected outputs are stored in:
+- `research/results/`
+- `rl_tuning/ppo_finetuned/`
+- trajectory folders under each agent directory
+
 
 ## Publications and Intermediate Projects
 
