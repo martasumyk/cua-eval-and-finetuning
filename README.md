@@ -98,7 +98,7 @@ Additional installation and configuration instructions for each part of the repo
 
 ## Data
 
-The dataset is available at Zenodo [link placeholder].
+The dataset is available at [Zenodo](https://zenodo.org/records/19952080).
 
 The dataset description is done by the [Datasheets for Datasets](https://arxiv.org/abs/1803.09010) methodology and is available [here](https://github.com/martasumyk/cua-eval-and-finetuning/blob/main/datasheet.md).
 
