@@ -2,7 +2,7 @@
 
 This datasheet documents the task dataset for Computer Use Agents (CUAs) introduced in this work. The dataset is intended to support three use cases: evaluation of autonomous evaluators, fine-tuning of CUAs, and training of CUA systems.
 
-The dataset is available on Zenodo: [link placeholder].
+The dataset is available on [Zenodo](https://zenodo.org/records/19952080).
 
 ---
 
@@ -154,7 +154,7 @@ Distribution
     identifier (DOI)?
 
     The dataset will be be distributed via Zenodo, see
-    [link placeholder]. The dataset will have a DOI.
+    https://zenodo.org/records/19952080. The dataset have a DOI.
 
 
 
